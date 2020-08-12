@@ -198,14 +198,14 @@ Write-Progress `
   -Status 'Running provisioning script provision-image.txt (as a .ps1) in VM' `
   -PercentComplete (100 / $TotalProgress * $CurrentProgress++)
 
-Invoke-AzVMRunCommand `
+$ProvisionImageResult = Invoke-AzVMRunCommand `
   -ResourceGroupName $ResourceGroupName `
   -VMName $ProtoVMName `
   -CommandId 'RunPowerShellScript' `
   -ScriptPath "$PSScriptRoot\provision-image.txt" `
-  -Parameter @{AdminUserPassword = $AdminPW; `
-    StorageAccountName=$StorageAccountName; `
-    StorageAccountKey=$StorageAccountKey;}
+  -Parameter @{AdminUserPassword = $AdminPW }
+
+Write-Host "provision-image.ps1 output: $($ProvisionImageResult.value.Message)"
 
 ####################################################################################################
 Write-Progress `
