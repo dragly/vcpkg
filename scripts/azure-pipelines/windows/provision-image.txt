@@ -471,6 +471,7 @@ InstallWindowsSDK -Url $WindowsSDKUrl
 InstallWindowsWDK -Url $WindowsWDKUrl
 InstallMpi -Url $MpiUrl
 InstallCuda -Url $CudaUrl -Features $CudaFeatures
+InstallMSI -Url $PwshUrl -Name 'PowerShell Core'
 if ([string]::IsNullOrWhiteSpace($StorageAccountName)) {
   Write-Host 'No storage account name configured.'
 } else {
