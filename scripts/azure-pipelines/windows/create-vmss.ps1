@@ -223,11 +223,13 @@ Write-Progress `
   -Status 'Running provisioning script sysprep.ps1 in VM' `
   -PercentComplete (100 / $TotalProgress * $CurrentProgress++)
 
-Invoke-AzVMRunCommand `
+$SysprepResult = Invoke-AzVMRunCommand `
   -ResourceGroupName $ResourceGroupName `
   -VMName $ProtoVMName `
   -CommandId 'RunPowerShellScript' `
   -ScriptPath "$PSScriptRoot\sysprep.ps1"
+
+Write-Host "sysprep.ps1 output: $($SysprepResult.value.Message)"
 
 ####################################################################################################
 Write-Progress `
