@@ -6,7 +6,7 @@ Param(
     [switch]$IgnoreErrors # allows one to just format
 )
 
-$clangFormat = 'C:\Program Files\LLVM\bin\clang-format.exe'
+$clangFormat = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\Llvm\bin\clang-format.exe'
 if (-not (Test-Path $clangFormat))
 {
     Write-Error "clang-format not found; is it installed in the CI machines?"
