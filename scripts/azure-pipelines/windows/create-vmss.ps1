@@ -203,7 +203,9 @@ $ProvisionImageResult = Invoke-AzVMRunCommand `
   -VMName $ProtoVMName `
   -CommandId 'RunPowerShellScript' `
   -ScriptPath "$PSScriptRoot\provision-image.txt" `
-  -Parameter @{AdminUserPassword = $AdminPW }
+  -Parameter @{AdminUserPassword = $AdminPW; `
+    StorageAccountName=$StorageAccountName; `
+    StorageAccountKey=$StorageAccountKey;}
 
 Write-Host "provision-image.ps1 output: $($ProvisionImageResult.value.Message)"
 
