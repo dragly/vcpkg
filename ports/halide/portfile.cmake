@@ -1,11 +1,9 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO halide/Halide
-    REF f43293be3725bb959941e38c1b1fa9ae925f7389
-    SHA512 f223185e208acf6c5b73353a6b5be815db5f2598f568596e800c35ea40b0babe4630da44229e14a5607e9d5e78298d07e7b36a9cbc7b71bf3e665bc12caff68e
+    REF 2e7b5ac9c19c5c06744732a0a74736372f3c0691
+    SHA512 889a6ac36d22a82814b9cafa349c43ff00e294d9ec0970435e0337204881632d6e843118f25b4005d4cf5686cd2aeaa30063a2bb75106c3b752f8cc841d6b9f0
     HEAD_REF master
-    PATCHES
-        fix-install-path.patch
 )
 
 set(TARGET_X86 OFF)
@@ -35,6 +33,7 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
     tutorials WITH_TUTORIALS
     docs WITH_DOCS
     utils WITH_UTILS
+    python WITH_PYTHON_BINDINGS
     nativeclient TARGET_NATIVE_CLIENT
     hexagon TARGET_HEXAGON
     metal TARGET_METAL
@@ -62,12 +61,12 @@ vcpkg_configure_cmake(
 
 vcpkg_install_cmake()
 
-vcpkg_fixup_cmake_targets(CONFIG_PATH share/halide)
+vcpkg_fixup_cmake_targets(CONFIG_PATH lib/cmake/Halide)
 
 vcpkg_copy_pdbs()
 
-file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include ${CURRENT_PACKAGES_DIR}/debug/share)
-file(RENAME ${CURRENT_PACKAGES_DIR}/share/${PORT}/halide_config.cmake ${CURRENT_PACKAGES_DIR}/share/${PORT}/halide-config.cmake)
-file(RENAME ${CURRENT_PACKAGES_DIR}/share/${PORT}/halide_config.make ${CURRENT_PACKAGES_DIR}/share/${PORT}/halide-config.make)
-
 file(INSTALL ${SOURCE_PATH}/LICENSE.txt DESTINATION ${CURRENT_PACKAGES_DIR}/share/${PORT} RENAME copyright)
+
+file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include ${CURRENT_PACKAGES_DIR}/debug/share)
+#file(RENAME ${CURRENT_PACKAGES_DIR}/share/${PORT}/halide_config.cmake ${CURRENT_PACKAGES_DIR}/share/${PORT}/halide-config.cmake)
+#file(RENAME ${CURRENT_PACKAGES_DIR}/share/${PORT}/halide_config.make ${CURRENT_PACKAGES_DIR}/share/${PORT}/halide-config.make)

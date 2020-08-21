@@ -30,6 +30,7 @@ Description: powerpc support
 
 Feature: ptx
 Description: ptx support
+Build-Depends: llvm[target-nvptx]
 
 Feature: opencl
 Build-Depends: opencl
@@ -47,3 +48,7 @@ Description: docs
 
 Feature: test
 Description: test
+
+Feature: python
+Build-Depends: halide[rtti]
+Description: python bindings
