@@ -30,7 +30,7 @@ Description: powerpc support
 
 Feature: ptx
 Description: ptx support
-Build-Depends: llvm[target-nvptx]
+Build-Depends: llvm[target-nvptx, target-x86]
 
 Feature: opencl
 Build-Depends: opencl
