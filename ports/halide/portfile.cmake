@@ -27,6 +27,7 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
     target-powerpc TARGET_POWERPC
     target-riscv TARGET_RISCV
     target-x86 TARGET_X86
+    python WITH_PYTHON_BINDINGS
 )
 
 vcpkg_configure_cmake(
@@ -35,7 +36,6 @@ vcpkg_configure_cmake(
     OPTIONS ${FEATURE_OPTIONS}
         -DWITH_APPS=NO
         -DWITH_DOCS=NO
-        -DWITH_PYTHON_BINDINGS=NO
         -DWITH_TESTS=NO
         -DWITH_TUTORIALS=NO
         -DWITH_UTILS=NO
