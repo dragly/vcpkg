@@ -61,3 +61,6 @@ Build-Depends: llvm[core,target-riscv]
 Feature: target-x86
 Description: Include X86 target
 Build-Depends: llvm[core,target-x86]
+
+Feature: python
+Description: python bindings
